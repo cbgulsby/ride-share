@@ -1,12 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
 
 function App() {
   return (
-    <div>
-      <h1>First Commit</h1>
-    </div>
+    <ThemeProvider>
+      <CSSReset />
+      <div>
+        <h1>First Commit</h1>
+      </div>
+    </ThemeProvider>
   );
 }
 
