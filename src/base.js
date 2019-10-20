@@ -1,7 +1,7 @@
 import * as firebase from "firebase/app";
 import "firebase/auth";
 
-const app = firebase.initializeApp({
+export const app = firebase.initializeApp({
     apiKey: "AIzaSyDP6RT5oPQTkpNHbobqiMieSCIAUAUz38U",
     authDomain: "ride-share-541ea.firebaseapp.com",
     databaseURL: "https://ride-share-541ea.firebaseio.com",
