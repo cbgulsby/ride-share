@@ -55,17 +55,17 @@ const SignUp = ({ history }) => {
         .then(() => {
           firebase.auth().onAuthStateChanged(newUser => {
             if(newUser) {
-              firebase.database().ref('users/' + newUser.uid).set({
-                id: newUser.uid,
-                firstName: firstName,
-                lastName: lastName,
-                phoneNumber: phoneNumber,
-                driverVerified: false,
-                licenseNumber: licenseNumber,
-                licensePlate: licensePlate,
-                make: make,
-                model: model,
-                handicapAccessible: handicapAccessible
+              firebase.firestore().collection("users").add({
+                  id: newUser.uid,
+                  firstName: firstName,
+                  lastName: lastName,
+                  phoneNumber: phoneNumber,
+                  driverVerified: false,
+                  licenseNumber: licenseNumber,
+                  licensePlate: licensePlate,
+                  make: make,
+                  model: model,
+                  handicapAccessible: handicapAccessible
               })
             }
             else {
