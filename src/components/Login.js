@@ -1,9 +1,9 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import app from "../base";
-import { AuthContext } from '../auth/Auth';
-import { Button } from '@chakra-ui/core';
+import { AuthContext } from "../auth/Auth";
+import { Button } from "@chakra-ui/core";
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -14,6 +14,7 @@ const Login = ({ history }) => {
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
+        console.log("hm");
         history.push("/");
       } catch (error) {
         alert(error);
@@ -40,20 +41,12 @@ const Login = ({ history }) => {
           Password
           <input name="password" type="password" placeholder="Password" />
         </label>
-        <Button 
-          mt={4}
-          variantColor="teal"
-          type="submit"
-        >
+        <Button mt={4} variantColor="teal" type="submit">
           Submit
         </Button>
       </form>
       <Link to="/signup">
-        <Button
-          mt={4}
-          variantColor="teal"
-          type="submit"
-        >
+        <Button mt={4} variantColor="teal" type="submit">
           Sign Up
         </Button>
       </Link>

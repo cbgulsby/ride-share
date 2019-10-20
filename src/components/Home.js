@@ -1,20 +1,23 @@
 import React from "react";
 import app from "../base";
-import * as firebase from 'firebase'
-import {
-  Text,
-} from '@chakra-ui/core'
+import { Link } from "react-router-dom";
+import { Button, Box } from "@chakra-ui/core";
 
 const Home = () => {
-
   var userId = firebase.auth().currentUser.uid;
 
   return (
-    <>
+    <Box p={5}>
       <h1>Home</h1>
-      <button onClick={() => app.auth().signOut()}>Sign out</button>
-      <Text>{userId}</Text>
-    </>
+      <Box>
+        <Button as={Link} to="/ride/new" variantColor="blue">
+          Request a Ride
+        </Button>
+      </Box>
+      <Box>
+        <button onClick={() => app.auth().signOut()}>Sign out</button>
+      </Box>
+    </Box>
   );
 };
 
