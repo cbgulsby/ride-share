@@ -1,6 +1,6 @@
 import React from "react";
 import firebase from "firebase/app";
-import { AuthContext } from "../auth/Auth";
+import { AuthContext } from "../components/Auth";
 import { Box } from "@chakra-ui/core";
 import NewRideForm from "../components/NewRideForm";
 

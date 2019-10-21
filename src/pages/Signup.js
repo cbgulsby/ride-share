@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import firebase from "firebase/app";
 import {
@@ -236,4 +235,4 @@ function SignUp({ history }) {
   );
 }
 
-export default withRouter(SignUp);
+export default SignUp;

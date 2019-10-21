@@ -1,8 +1,8 @@
 import React, { useCallback, useContext } from "react";
-import { withRouter, Redirect } from "react-router";
+import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import firebase from "firebase/app";
-import { AuthContext } from "../auth/Auth";
+import { AuthContext } from "../components/Auth";
 import { Button, Box, FormControl, FormLabel, Input } from "@chakra-ui/core";
 
 function Login({ history }) {
@@ -65,4 +65,4 @@ function Login({ history }) {
   );
 }
 
-export default withRouter(Login);
+export default Login;
