@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { Button, Box } from "@chakra-ui/core";
 
 const Home = () => {
-  var userId = firebase.auth().currentUser.uid;
-
   return (
     <Box p={5}>
       <h1>Home</h1>
