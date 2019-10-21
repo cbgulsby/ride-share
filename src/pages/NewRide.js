@@ -1,14 +1,14 @@
 import React from "react";
-import app from "../base";
-import { AuthContext } from "../auth/Auth";
+import firebase from "firebase/app";
+import { AuthContext } from "../components/Auth";
 import { Box } from "@chakra-ui/core";
-import NewRideForm from "./NewRideForm";
+import NewRideForm from "../components/NewRideForm";
 
 function NewRide({ history }) {
   const { currentUser } = React.useContext(AuthContext);
 
   function onCreateRide(values) {
-    app
+    firebase
       .firestore()
       .collection("requests")
       .add({

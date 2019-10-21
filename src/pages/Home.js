@@ -1,11 +1,9 @@
 import React from "react";
-import app from "../base";
+import firebase from "firebase/app";
 import { Link } from "react-router-dom";
 import { Button, Box } from "@chakra-ui/core";
 
-const Home = () => {
-  var userId = firebase.auth().currentUser.uid;
-
+function Home() {
   return (
     <Box p={5}>
       <h1>Home</h1>
@@ -15,10 +13,10 @@ const Home = () => {
         </Button>
       </Box>
       <Box>
-        <button onClick={() => app.auth().signOut()}>Sign out</button>
+        <button onClick={() => firebase.auth().signOut()}>Sign out</button>
       </Box>
     </Box>
   );
-};
+}
 
 export default Home;
