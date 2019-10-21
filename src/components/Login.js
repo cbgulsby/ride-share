@@ -1,15 +1,9 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import app from "../base";
-import { AuthContext } from '../auth/Auth';
-import { 
-  Button,
-  Box,
-  FormControl,
-  FormLabel,
-  Input
-} from '@chakra-ui/core';
+import { AuthContext } from "../auth/Auth";
+import { Button, Box, FormControl, FormLabel, Input } from "@chakra-ui/core";
 
 const Login = ({ history }) => {
   const handleLogin = useCallback(
@@ -20,6 +14,7 @@ const Login = ({ history }) => {
         await app
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
+        console.log("hm");
         history.push("/");
       } catch (error) {
         alert(error);
@@ -40,28 +35,14 @@ const Login = ({ history }) => {
       <Box>
         <form onSubmit={handleLogin}>
           <FormControl>
+            <FormLabel>Email</FormLabel>
+            <Input name="email" type="email" placeholder="Email" />
 
-            <FormLabel>
-              Email
-            </FormLabel>
-            <Input
-              name="email" type="email" placeholder="Email"
-            />
-
-            <FormLabel>
-              Password
-            </FormLabel>
-            <Input
-              name="password" type="password" placeholder="Password"
-            />
-
+            <FormLabel>Password</FormLabel>
+            <Input name="password" type="password" placeholder="Password" />
           </FormControl>
           <Box>
-            <Button 
-              mt={4}
-              variantColor="blue"
-              type="submit"
-            >
+            <Button mt={4} variantColor="blue" type="submit">
               Submit
             </Button>
           </Box>
@@ -70,16 +51,11 @@ const Login = ({ history }) => {
 
       <Box>
         <Link to="/signup">
-          <Button
-            mt={4}
-            variantColor="blue"
-            type="submit"
-          >
+          <Button mt={4} variantColor="blue" type="submit">
             Sign Up
           </Button>
         </Link>
       </Box>
-
     </Box>
   );
 };
