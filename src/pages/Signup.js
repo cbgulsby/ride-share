@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { app } from "../base";
-import * as firebase from "firebase";
+import firebase from "firebase/app";
 import {
   FormControl,
   FormLabel,
@@ -13,7 +12,7 @@ import {
   Box
 } from "@chakra-ui/core";
 
-const SignUp = ({ history }) => {
+function SignUp({ history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -31,7 +30,7 @@ const SignUp = ({ history }) => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await app
+        await firebase
           .auth()
           .createUserWithEmailAndPassword(email.value, password.value)
           .then(() => {
@@ -78,7 +77,7 @@ const SignUp = ({ history }) => {
       <Text>Sign Up</Text>
       <form onSubmit={handleSignUp}>
         <FormControl isRequired>
-          <FormLabel fontSize="lg" fontWeight="bold">
+          <FormLabel htmlFor="email" fontSize="lg" fontWeight="bold">
             Email
           </FormLabel>
           <Input
@@ -91,7 +90,7 @@ const SignUp = ({ history }) => {
             }}
           />
 
-          <FormLabel fontSize="lg" fontWeight="bold">
+          <FormLabel htmlFor="password" fontSize="lg" fontWeight="bold">
             Password
           </FormLabel>
           <Input
@@ -104,7 +103,7 @@ const SignUp = ({ history }) => {
             }}
           />
 
-          <FormLabel fontSize="lg" fontWeight="bold">
+          <FormLabel htmlFor="firstName" fontSize="lg" fontWeight="bold">
             First Name
           </FormLabel>
           <Input
@@ -116,7 +115,7 @@ const SignUp = ({ history }) => {
             }}
           />
 
-          <FormLabel fontSize="lg" fontWeight="bold">
+          <FormLabel htmlFor="lastName" fontSize="lg" fontWeight="bold">
             Last Name
           </FormLabel>
           <Input
@@ -128,7 +127,7 @@ const SignUp = ({ history }) => {
             }}
           />
 
-          <FormLabel fontSize="lg" fontWeight="bold">
+          <FormLabel htmlFor="phoneNumber" fontSize="lg" fontWeight="bold">
             Phone Number
           </FormLabel>
           <Input
@@ -152,7 +151,11 @@ const SignUp = ({ history }) => {
 
           {isDriver ? (
             <Box>
-              <FormLabel fontSize="lg" fontWeight="bold">
+              <FormLabel
+                htmlFor="licenseNumber"
+                fontSize="lg"
+                fontWeight="bold"
+              >
                 Driver's License Number
               </FormLabel>
               <Input
@@ -165,7 +168,7 @@ const SignUp = ({ history }) => {
                 }}
               />
 
-              <FormLabel fontSize="lg" fontWeight="bold">
+              <FormLabel htmlFor="licensePlate" fontSize="lg" fontWeight="bold">
                 License Plate Number
               </FormLabel>
               <Input
@@ -178,7 +181,7 @@ const SignUp = ({ history }) => {
                 }}
               />
 
-              <FormLabel fontSize="lg" fontWeight="bold">
+              <FormLabel htmlFor="make" fontSize="lg" fontWeight="bold">
                 Make
               </FormLabel>
               <Input
@@ -191,7 +194,9 @@ const SignUp = ({ history }) => {
                 }}
               />
 
-              <FormLabel>Model</FormLabel>
+              <FormLabel htmlFor="model" fontSize="lg" fontWeight="bold">
+                Model
+              </FormLabel>
               <Input
                 id="model"
                 type="text"
@@ -215,7 +220,7 @@ const SignUp = ({ history }) => {
             <> </>
           )}
           <Box>
-            <Button mt={4} variantColor="teal" type="submit">
+            <Button mt={4} variantColor="blue" type="submit">
               Submit
             </Button>
           </Box>
@@ -223,12 +228,12 @@ const SignUp = ({ history }) => {
       </form>
 
       <Link to="/login">
-        <Button mt={4} variantColor="teal" type="submit">
+        <Button mt={4} variantColor="blue" type="submit">
           Login
         </Button>
       </Link>
     </Box>
   );
-};
+}
 
 export default withRouter(SignUp);

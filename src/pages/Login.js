@@ -1,17 +1,17 @@
 import React, { useCallback, useContext } from "react";
 import { withRouter, Redirect } from "react-router";
 import { Link } from "react-router-dom";
-import app from "../base";
+import firebase from "firebase/app";
 import { AuthContext } from "../auth/Auth";
 import { Button, Box, FormControl, FormLabel, Input } from "@chakra-ui/core";
 
-const Login = ({ history }) => {
+function Login({ history }) {
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
       const { email, password } = event.target.elements;
       try {
-        await app
+        await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
         console.log("hm");
@@ -35,11 +35,16 @@ const Login = ({ history }) => {
       <Box>
         <form onSubmit={handleLogin}>
           <FormControl>
-            <FormLabel>Email</FormLabel>
-            <Input name="email" type="email" placeholder="Email" />
+            <FormLabel htmlFor="email">Email</FormLabel>
+            <Input id="email" name="email" type="email" placeholder="Email" />
 
-            <FormLabel>Password</FormLabel>
-            <Input name="password" type="password" placeholder="Password" />
+            <FormLabel htmlFor="password">Password</FormLabel>
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
           </FormControl>
           <Box>
             <Button mt={4} variantColor="blue" type="submit">
@@ -58,6 +63,6 @@ const Login = ({ history }) => {
       </Box>
     </Box>
   );
-};
+}
 
 export default withRouter(Login);

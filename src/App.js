@@ -2,10 +2,10 @@ import React from "react";
 import "./App.css";
 import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import NewRide from "./components/NewRide";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import NewRide from "./pages/NewRide";
 import { AuthProvider } from "./auth/Auth";
 import PrivateRoute from "./PrivateRoute";
 
