@@ -2,10 +2,10 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { AuthContext } from "./Auth";
 import { Box, Flex, Button, Heading } from "@chakra-ui/core";
-import { COLORS } from "../utils/constants";
+import { COLORS, MAX_WIDTH } from "../utils/constants";
 
 function Navigation({ history }) {
-  const { signOut } = React.useContext(AuthContext);
+  const { signOut, currentUser } = React.useContext(AuthContext);
 
   function signOutAndNavigate() {
     signOut().then(() => history.push("/"));
@@ -18,7 +18,7 @@ function Navigation({ history }) {
         justify="space-between"
         direction={["column", "column", "row"]}
         w="100%"
-        maxW={1200}
+        maxW={MAX_WIDTH}
         mx="auto"
       >
         <Link to="/">
@@ -26,39 +26,42 @@ function Navigation({ history }) {
             RideShare
           </Heading>
         </Link>
-        <Flex
-          align="center"
-          justify="start"
-          direction={["column-reverse", "column-reverse", "row"]}
-        >
-          <Button
-            as={Link}
-            to="/ride/new"
-            variant="outline"
-            variantColor={COLORS.primary}
-            display={["none", "none", "inline-flex"]}
-            mr={2}
+
+        {currentUser && (
+          <Flex
+            align="center"
+            justify="start"
+            direction={["column-reverse", "column-reverse", "row"]}
           >
-            Request Ride
-          </Button>
-          <Button
-            as={Link}
-            to="/"
-            variant="ghost"
-            variantColor={COLORS.primary}
-            display={["none", "none", "inline-flex"]}
-            mr={2}
-          >
-            Home
-          </Button>
-          <Button
-            display={["none", "none", "inline-flex"]}
-            mr={2}
-            onClick={signOutAndNavigate}
-          >
-            Sign Out
-          </Button>
-        </Flex>
+            <Button
+              as={Link}
+              to="/ride/new"
+              variant="outline"
+              variantColor={COLORS.primary}
+              display={["none", "none", "inline-flex"]}
+              mr={2}
+            >
+              Request Ride
+            </Button>
+            <Button
+              as={Link}
+              to="/"
+              variant="ghost"
+              variantColor={COLORS.primary}
+              display={["none", "none", "inline-flex"]}
+              mr={2}
+            >
+              Home
+            </Button>
+            <Button
+              display={["none", "none", "inline-flex"]}
+              mr={2}
+              onClick={signOutAndNavigate}
+            >
+              Sign Out
+            </Button>
+          </Flex>
+        )}
       </Flex>
     </Box>
   );
