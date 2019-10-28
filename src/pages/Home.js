@@ -13,6 +13,11 @@ function Home() {
         </Button>
       </Box>
       <Box>
+        <Button as={Link} to="/ride/offer" variantColor="red">
+          Offer a Ride
+        </Button>
+      </Box>
+      <Box>
         <button onClick={() => firebase.auth().signOut()}>Sign out</button>
       </Box>
     </Box>
