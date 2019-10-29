@@ -10,10 +10,15 @@ export const AuthProvider = ({ children }) => {
     firebase.auth().onAuthStateChanged(setCurrentUser);
   }, []);
 
+  function signOut() {
+    return firebase.auth().signOut();
+  }
+
   return (
     <AuthContext.Provider
       value={{
-        currentUser
+        currentUser,
+        signOut
       }}
     >
       {children}

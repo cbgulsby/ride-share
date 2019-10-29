@@ -1,7 +1,7 @@
 import React from "react";
 import firebase from "firebase/app";
 import { AuthContext } from "../components/Auth";
-import { Box } from "@chakra-ui/core";
+import Layout from "../components/Layout";
 import NewRideForm from "../components/NewRideForm";
 
 function NewRide({ history }) {
@@ -22,9 +22,9 @@ function NewRide({ history }) {
   }
 
   return (
-    <Box p={5}>
+    <Layout>
       <NewRideForm onCreateRide={onCreateRide} />
-    </Box>
+    </Layout>
   );
 }
 
