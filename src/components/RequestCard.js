@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Box, Text, Button } from "@chakra-ui/core";
 
 function RequestCard(props) {
@@ -15,7 +16,11 @@ function RequestCard(props) {
       <Text p={1 / 2}>{props.toCity}</Text>
       <Text p={1 / 2}>{props.toState}</Text>
       <Text p={1 / 2}>{props.toFacility}</Text>
-      <Button p={1 / 2}>Offer Ride</Button>
+      <Link to="/ride/make-offer">
+        <Button type="submit" p={1 / 2}>
+          Offer Ride
+        </Button>
+      </Link>
     </Box>
   );
 }
