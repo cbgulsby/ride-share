@@ -1,9 +1,18 @@
 import React, { useCallback, useContext } from "react";
 import { Redirect } from "react-router";
-import { Link } from "react-router-dom";
+import { Link as RRLink } from "react-router-dom";
 import firebase from "firebase/app";
 import { AuthContext } from "../components/Auth";
-import { Button, Box, FormControl, FormLabel, Input } from "@chakra-ui/core";
+import {
+  Button,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Link,
+  Heading
+} from "@chakra-ui/core";
+import Layout from "../components/Layout";
 
 function Login({ history }) {
   const handleLogin = useCallback(
@@ -14,7 +23,7 @@ function Login({ history }) {
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        // console.log("hm");
+
         history.push("/");
       } catch (error) {
         alert(error);
@@ -30,8 +39,10 @@ function Login({ history }) {
   }
 
   return (
-    <Box p={4}>
-      <h1>Log in</h1>
+    <Layout>
+      <Heading as="h1" size="xl" mb={4}>
+        Login
+      </Heading>
       <Box>
         <form onSubmit={handleLogin}>
           <FormControl>
@@ -54,14 +65,10 @@ function Login({ history }) {
         </form>
       </Box>
 
-      <Box>
-        <Link to="/signup">
-          <Button mt={4} variantColor="blue" type="submit">
-            Sign Up
-          </Button>
-        </Link>
-      </Box>
-    </Box>
+      <Link as={RRLink} to="/signup" d="block" mt={4}>
+        Don't have an account? Sign up now.
+      </Link>
+    </Layout>
   );
 }
 

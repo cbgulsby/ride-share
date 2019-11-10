@@ -1,7 +1,6 @@
 import React from "react";
-import firebase from "firebase/app";
-import { Link } from "react-router-dom";
-import { Button, Box } from "@chakra-ui/core";
+import { Heading } from "@chakra-ui/core";
+import Layout from "../components/Layout";
 
 function Home() {
   return (

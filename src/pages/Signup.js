@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link as RRLink } from "react-router-dom";
 import firebase from "firebase/app";
 import {
   FormControl,
@@ -8,8 +8,11 @@ import {
   Button,
   Text,
   Checkbox,
-  Box
+  Box,
+  Link,
+  Heading
 } from "@chakra-ui/core";
+import Layout from "../components/Layout";
 
 function SignUp({ history }) {
   const [email, setEmail] = useState("");
@@ -73,9 +76,11 @@ function SignUp({ history }) {
   );
 
   return (
-    <Box p={4}>
-      <Text>Sign Up</Text>
-      <form onSubmit={handleSignUp}>
+    <Layout>
+      <Heading as="h1" size="xl" mb={4}>
+        Sign Up
+      </Heading>
+      <Box as="form" onSubmit={handleSignUp}>
         <FormControl isRequired>
           <FormLabel htmlFor="email" fontSize="lg" fontWeight="bold">
             Email
@@ -221,18 +226,16 @@ function SignUp({ history }) {
           )}
           <Box>
             <Button mt={4} variantColor="blue" type="submit">
-              Submit
+              Create an account
             </Button>
           </Box>
         </FormControl>
-      </form>
+      </Box>
 
-      <Link to="/login">
-        <Button mt={4} variantColor="blue" type="submit">
-          Login
-        </Button>
+      <Link as={RRLink} to="/login" d="block" mt={4}>
+        Already have an account? Login.
       </Link>
-    </Box>
+    </Layout>
   );
 }
 
