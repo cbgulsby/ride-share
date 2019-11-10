@@ -6,7 +6,6 @@ import {
   FormLabel,
   Input,
   Button,
-  Text,
   Checkbox,
   Box,
   Link,
