@@ -14,7 +14,7 @@ function Login({ history }) {
         await firebase
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
-        console.log("hm");
+        // console.log("hm");
         history.push("/");
       } catch (error) {
         alert(error);

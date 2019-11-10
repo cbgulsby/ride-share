@@ -9,12 +9,21 @@ function RideRequestList({ requestList }) {
       <Box>
         {requestList.map(request => (
           <RequestCard
-            toCity={request.toCity}
-            toState={request.toState}
-            toFacility={request.toFacility}
-            toStreet={request.toStreet}
-            userId={request.userId}
-            key={request.key}
+            fromCity={request.pickupInfo.fromCity}
+            fromState={request.pickupInfo.fromState}
+            fromZipCode={request.pickupInfo.fromZipCode}
+            fromFacility={request.pickupInfo.fromFacility}
+            fromStreet={request.pickupInfo.fromStreet}
+            toCity={request.dropOffInfo.toCity}
+            toState={request.dropOffInfo.toState}
+            toZipCode={request.dropOffInfo.toZipCode}
+            toFacility={request.dropOffInfo.toFacility}
+            toStreet={request.dropOffInfo.toStreet}
+            firstName={request.user.firstName}
+            lastName={request.user.lastName}
+            date={request.date}
+            requestID={request.requestID}
+            key={request.requestID}
           />
         ))}
       </Box>

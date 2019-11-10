@@ -4,7 +4,7 @@ import { Box } from "@chakra-ui/core";
 import OfferRideForm from "../components/OfferRideForm";
 import RideRequestList from "../components/RideRequestList";
 
-function OfferRide({ history }) {
+function OfferRide() {
   const [requestList, setRequestList] = useState([]);
 
   function onOfferRide(values) {
@@ -15,19 +15,68 @@ function OfferRide({ history }) {
       .get()
       .then(function(querySnapshot) {
         const tempRequestList = [];
-        querySnapshot.forEach(function(doc) {
-          const { toCity, toState, toFacility, toStreet, userId } = doc.data();
+        const userIds = [];
+        querySnapshot.forEach(function(doc, i) {
+          const {
+            date,
+            fromCity,
+            fromState,
+            fromStreet,
+            fromZipCode,
+            toCity,
+            toState,
+            toZipCode,
+            toFacility,
+            toStreet,
+            userId
+          } = doc.data();
+
           tempRequestList.push({
-            toCity: toCity,
-            toState: toState,
-            toFacility: toFacility,
-            toStreet: toStreet,
-            userId: userId,
-            key: doc.id
+            pickupInfo: {
+              fromCity: fromCity,
+              fromState: fromState,
+              fromStreet: fromStreet,
+              fromZipCode: fromZipCode
+            },
+            dropOffInfo: {
+              toCity: toCity,
+              toState: toState,
+              toZipCode: toZipCode,
+              toFacility: toFacility,
+              toStreet: toStreet
+            },
+            date: date,
+            requestingUser: userId,
+            requestID: doc.id
           });
+          userIds.push(userId);
         });
-        console.log(tempRequestList);
-        setRequestList(tempRequestList);
+
+        fetchUsers(userIds).then(userArray => {
+          tempRequestList.map(tempRequest => {
+            tempRequest.user = userArray.find(
+              user => user.id === tempRequest.requestingUser
+            );
+            return tempRequest;
+          });
+          setRequestList(tempRequestList);
+        });
+      });
+  }
+
+  function fetchUsers(userIds) {
+    return firebase
+      .firestore()
+      .collection("users")
+      .where("id", "in", userIds)
+      .get()
+      .then(response => {
+        const userArray = [];
+
+        response.forEach(s => {
+          userArray.push(s.data());
+        });
+        return userArray;
       });
   }
 

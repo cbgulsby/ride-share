@@ -38,7 +38,8 @@ function SignUp({ history }) {
                 firebase
                   .firestore()
                   .collection("users")
-                  .add({
+                  .doc(newUser.uid)
+                  .set({
                     id: newUser.uid,
                     firstName: firstName,
                     lastName: lastName,
