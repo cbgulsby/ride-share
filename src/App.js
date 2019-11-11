@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import NewRide from "./pages/NewRide";
+import OfferRide from "./pages/OfferRide";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <>
             <PrivateRoute exact path="/" component={Home} />
             <PrivateRoute exact path="/ride/new" component={NewRide} />
+            <PrivateRoute exact path="/ride/offer" component={OfferRide} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
           </>
