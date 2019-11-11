@@ -3,6 +3,7 @@ import firebase from "firebase/app";
 import { Box } from "@chakra-ui/core";
 import OfferRideForm from "../components/OfferRideForm";
 import RideRequestList from "../components/RideRequestList";
+import Layout from "../components/Layout";
 
 function OfferRide() {
   const [requestList, setRequestList] = useState([]);
@@ -81,14 +82,16 @@ function OfferRide() {
   }
 
   return (
-    <Box display="flex" alignItems="flex-start" justifyItems="space-between">
-      <Box p={10}>
-        <OfferRideForm onOfferRide={onOfferRide} />
+    <Layout>
+      <Box>
+        <Box p={10}>
+          <OfferRideForm onOfferRide={onOfferRide} />
+        </Box>
+        <Box p={10}>
+          <RideRequestList requestList={requestList} />
+        </Box>
       </Box>
-      <Box p={10}>
-        <RideRequestList requestList={requestList} />
-      </Box>
-    </Box>
+    </Layout>
   );
 }
 

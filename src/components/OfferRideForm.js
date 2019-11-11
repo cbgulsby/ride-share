@@ -39,40 +39,40 @@ function OfferRide({ onOfferRide }) {
             <Text as="legend" fontSize="lg" fontWeight="bold">
               Start Location
             </Text>
-            <Flex justify="space-between" mt={-4}>
-              <Field
-                name="fromCity"
-                label="City"
-                isRequired
-                component={TextFormField}
-              />
-              <Field
-                name="fromState"
-                label="State"
-                isRequired
-                component={TextFormField}
-              />
-            </Flex>
+            {/* <Flex justify="space-between" mt={-4}> */}
+            <Field
+              name="fromCity"
+              label="City"
+              isRequired
+              component={TextFormField}
+            />
+            <Field
+              name="fromState"
+              label="State"
+              isRequired
+              component={TextFormField}
+            />
+            {/* </Flex> */}
           </Box>
 
           <Box as="fieldset" mt={4} mb={10} borderBottomWidth="1px">
             <Text as="legend" fontSize="lg" fontWeight="bold">
               Destination
             </Text>
-            <Flex justify="space-between" mt={-4}>
-              <Field
-                name="toCity"
-                label="City"
-                isRequired
-                component={TextFormField}
-              />
-              <Field
-                name="toState"
-                label="State"
-                isRequired
-                component={TextFormField}
-              />
-            </Flex>
+            {/* <Flex justify="space-between" mt={-4}> */}
+            <Field
+              name="toCity"
+              label="City"
+              isRequired
+              component={TextFormField}
+            />
+            <Field
+              name="toState"
+              label="State"
+              isRequired
+              component={TextFormField}
+            />
+            {/* </Flex> */}
           </Box>
 
           <Field

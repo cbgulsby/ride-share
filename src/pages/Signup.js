@@ -192,7 +192,7 @@ function SignUp({ history }) {
                 id="make"
                 type="text"
                 value={make}
-                placeholder="XXXXXXXXX"
+                placeholder="(e.g. Honda, Toyota)"
                 onChange={e => {
                   setMake(e.target.value);
                 }}
@@ -205,7 +205,7 @@ function SignUp({ history }) {
                 id="model"
                 type="text"
                 value={model}
-                placeholder="XXXXXXXXX"
+                placeholder="e.g. (Civic, Corolla)"
                 onChange={e => {
                   setModel(e.target.value);
                 }}
